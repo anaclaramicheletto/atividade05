@@ -55,8 +55,19 @@ app.get("/2tds2", (req, res) => {
   return res.status(200).json({ message: "Hello, 2tds2!" });
 });
 
-app.get("/emocoes", (req, res) => {
+app.post("/emocoes", (req, res) => {
+  const{nome, cor } = req.body
+  const novaEmocao = {
+    id: emocoes.length + 1,
+    nome: nome,
+    cor: cor 
+  }
+
+  emocoes.push(novaEmocao)
+  return res.status(200)
+  .send(emocoes)
   return res.status(200).send(emocoes);
+
 });
 
 app.get("/personagens", (req, res) => {
