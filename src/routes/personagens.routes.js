@@ -1,4 +1,15 @@
-import { Router } from "express"
+//Rota para criar uma nova emoção
+emocoesRoutes.post("/", (req, res) => {
+    const {nome, cor } = req.body
+    const novaEmocao = {
+      id: emocoes.length + 1,
+      nome: nome,
+      cor: cor
+    }
+    emocoes.push(novaEmocao)
+    return res.status(201).send ( emocoes )
+  });
+  import { Router } from "express"
 
 const emocoesRoutes = Router()
 
@@ -86,7 +97,7 @@ emocoesRoutes.delete("/:id", (req, res) => {
 
   if (!emocao) {
     return res.status(404).send({
-      message: "Emoção não encontrada!",
+      message: "Personagem não encontrado!",
     });
   }
 
@@ -101,3 +112,7 @@ emocoesRoutes.delete("/:id", (req, res) => {
 
 
 export default emocoesRoutes
+
+  //Rota para buscar uma emoção pelo id
+  emocoesRoutes.get("/:id", (req, res) => {
+    const { id } = req.params;

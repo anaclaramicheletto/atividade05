@@ -10,3 +10,4 @@ routes.get("/", (req, res) => {
   routes.use ("/emocoes", emocoesRoutes)
 
   export default routes
+  
